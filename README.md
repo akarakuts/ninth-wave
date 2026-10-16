@@ -72,7 +72,7 @@ For photorealistic generation, consider using an AI image generation API (e.g., 
 
 ## License
 
-MIT
+[MIT](LICENSE)
 
 ## Author
 
