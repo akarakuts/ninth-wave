@@ -1,27 +1,27 @@
-# Ninth Wave
+# Ninth Wave (Девятый вал)
 
-Procedural generation of a painting inspired by Ivan Aivazovsky's *The Ninth Wave* (1850) — using Python, Pillow, and NumPy.
+Процедурная генерация картины по мотивам «Девятого вала» И. К. Айвазовского (1850) — на Python, Pillow и NumPy.
 
-![Ninth Wave](assets/ninth_wave.png)
+![Девятый вал](assets/ninth_wave.png)
 
-## About
+## О проекте
 
-This project creates a digital seascape programmatically, recreating the key compositional elements of Aivazovsky's famous marine painting:
+Проект программно создаёт морской пейзаж, воспроизводящий ключевые композиционные элементы знаменитой картины Айвазовского:
 
-- **Dawn sky** — multi-stop gradient from deep purple to golden horizon with fractal clouds
-- **Sun** — layered glow with bright core
-- **The ninth wave** — asymmetric crest with foam and spray
-- **Ocean layers** — stacked waves with illuminated crests
-- **Shipwreck** — broken mast with silhouetted survivors
-- **Post-processing** — color grading, oil-paint blending, canvas grain, vignette
+- **Небо на рассвете** — многоступенчатый градиент от тёмно-пурпурного к золотому горизонту с фрактальными облаками
+- **Солнце** — многослойное свечение с ярким ядром
+- **Девятый вал** — асимметричный гребень с пеной и брызгами
+- **Слои моря** — многослойные волны с освещёнными гребнями
+- **Обломки корабля** — сломанная мачта с силуэтами выживших
+- **Пост-обработка** — цветокоррекция, масляное смешение, зерно холста, виньетка
 
-## Requirements
+## Требования
 
 - Python 3.9+
 - [Pillow](https://python-pillow.org/)
 - [NumPy](https://numpy.org/)
 
-## Installation
+## Установка
 
 ```bash
 git clone https://github.com/akarakuts/ninth-wave.git
@@ -29,51 +29,51 @@ cd ninth-wave
 pip install -r requirements.txt
 ```
 
-## Usage
+## Запуск
 
 ```bash
 python3 ninth_wave.py
 ```
 
-Output is saved to `output/ninth_wave_pil.png` (1600×1080).
+Изображение сохраняется в `output/ninth_wave_pil.png` (1600×1080).
 
-Generation takes 10–30 seconds depending on hardware.
+Генерация занимает 10–30 секунд в зависимости от железа.
 
-## Configuration
+## Настройки
 
-Edit the top of `ninth_wave.py`:
+Параметры задаются в начале файла `ninth_wave.py`:
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `W, H` | Image dimensions | `1600, 1080` |
-| `random.seed(...)` | Reproducibility seed | `101` |
-| `horizon` | Horizon height (fraction of H) | `H * 0.45` |
-| `peak_x` | Wave peak position (fraction of W) | `W * 0.60` |
+| Параметр | Описание | По умолчанию |
+|----------|----------|--------------|
+| `W, H` | Размер изображения | `1600, 1080` |
+| `random.seed(...)` | Seed для воспроизводимости | `101` |
+| `horizon` | Высота горизонта (доля от H) | `H * 0.45` |
+| `peak_x` | Позиция пика волны (доля от W) | `W * 0.60` |
 
-## How It Works
+## Как это работает
 
-1. **Sky** — vertical gradient using color stops, blended with fractal Brownian motion (fbm) noise for clouds
-2. **Sun** — concentric ellipses with decreasing alpha for radial glow
-3. **Sea** — sine-wave composites at multiple frequencies, stacked back-to-front
-4. **Main wave** — asymmetric Gaussian profile with multi-octave ripple; solid polygon fill + vertical gradient
-5. **Crest glow** — translucent overlay simulating light passing through thin water (Aivazovsky's signature technique)
-6. **Foam** — thousands of small ellipses clustered near the wave crest
-7. **Post** — enhance contrast/color, blend with blurred copy for "oil paint" effect, add noise grain, apply vignette
+1. **Небо** — вертикальный градиент по цветовым стопам, смешанный с шумом фрактального броуновского движения (fbm) для облаков
+2. **Солнце** — концентрические эллипсы с убывающей прозрачностью для радиального свечения
+3. **Море** — синусоидальные композиты на нескольких частотах, накладываемые сзади наперёд
+4. **Главная волна** — асимметричный гауссов профиль с многооктавной рябью; сплошная заливка полигона + вертикальный градиент
+5. **Свечение гребня** — полупрозрачный слой, имитирующий прохождение света сквозь тонкую воду (фирменный приём Айвазовского)
+6. **Пена** — тысячи мелких эллипсов, сконцентрированных у гребня волны
+7. **Пост-обработка** — усиление контраста/цвета, смешение с размытой копией для эффекта «масляной краски», добавление зерна, применение виньетки
 
-## Limitations
+## Ограничения
 
-This is a **stylized abstraction**, not a photorealistic reproduction. Procedural drawing with PIL has inherent limits:
+Это **стилизованная абстракция**, а не фотореалистичная копия. Процедурная отрисовка на PIL имеет принципиальные ограничения:
 
-- No true brush strokes or paint texture
-- Wave translucency is simulated with alpha gradients, not physically accurate
-- Foam is point-based, not fluid-dynamics based
+- Нет настоящих мазков кисти и фактуры краски
+- Прозрачность волны имитируется альфа-градиентами, а не физически точно
+- Пена строится точками, а не методами гидродинамики
 
-For photorealistic generation, consider using an AI image generation API (e.g., `qwen-image-3.0-pro`).
+Для фотореалистичной генерации рассмотрите использование API нейросетевой генерации изображений (например, `qwen-image-3.0-pro`).
 
-## License
+## Лицензия
 
 [MIT](LICENSE)
 
-## Author
+## Автор
 
 [akarakuts](https://github.com/akarakuts)
